@@ -1,23 +1,55 @@
+let formEl = document.getElementById('form');  
+let InputEl = document.getElementById('input-txt');
+let ulList = document.querySelector('.list');  
 
-// input function========
-let formEl = document.getElementById('sm-box');
-let list = document.querySelector('.list');
-let input = document.getElementById('input-words');
+let iconsEl = document.querySelector('.icons');
 
 
-
-  formEl.addEventListener("submit", (event)=>{
-    event.preventDefault();
-
-     toDoList();
+formEl.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    
+    toDoListApp();
 });
 
 
-function toDoList(){
-    let newInput = input.value;
-    const liEl = document.createElement('li');
-    liEl.innerText = newInput
-    list.appendChild(liEl)
-    input.value = ''
+function toDoListApp(){
+    const outPutTxt = InputEl.value;
+    let liEl = document.createElement('li');
+    liEl.textContent = outPutTxt;
+    ulList.appendChild(liEl);
+    InputEl.value = ""
 
-}
+    // buttons===========
+
+    const chkBtnEl = document.createElement('div');
+    chkBtnEl.innerHTML = '<i class="fas fa-check-square"></i>'
+    liEl.appendChild(chkBtnEl);
+
+    const trashBtnEl = document.createElement('div');
+    trashBtnEl.innerHTML = '<i class="fas fa-trash"></i>';
+    liEl.appendChild(trashBtnEl);
+
+
+    // if statement ===========
+
+    chkBtnEl.addEventListener('click', ()=>{
+        liEl.classList.toggle('checked');   
+    });
+
+    trashBtnEl.addEventListener('click', ()=>{
+        liEl.remove();
+
+    });
+
+  
+};
+
+
+// 
+
+
+    
+
+
+
+
